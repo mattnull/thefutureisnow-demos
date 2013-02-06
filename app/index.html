@@ -24,7 +24,7 @@
                 <ul class="nav">
                   <li class="active"><a href="#">Home</a></li>
                   <li><a href="#websockets">Web Sockets</a></li>
-                  <li><a href="#destkopnotifications">Desktop Notifications</a></li>
+                  <li><a href="#desktopnotifications">Desktop Notifications</a></li>
                   <li><a href="#camera">Camera Access</a></li>
                   <li><a href="#mobile">Mobile</a></li>
                 </ul>
@@ -33,39 +33,45 @@
         </div>
         <div id="main-content" class="container">
              <!-- Web Sockets -->
-            <div id="websockets" class="row">
-                <div class="span11">
-                    <h1>Web Sockets</h1>
-                    <ul>
-                        <li>Easily build real-time web apps</li>
-                    </ul>
-                    <h2>Browser Support</h2>
-                    <iframe src="http://caniuse.com/websockets/embed/"></iframe>
-                    <h2>Tools and Frameworks</h2>
-                    <ul class="">
-                        <li><a href="http://socket.io" target="_blank">Socket.io</a></li>
-                    </ul>
-                    <h2>Demo - Real-time Twitter Feed</h2>
-                    <input type="text" id="fetchTwitterData" placeholder="Enter a keyword" /><span id="twitter-stream-status"></span>
-                    <div id="count">0</div>
-                    <ul id="twitter-feed" class="unstyled"></ul>
+            <section id="websockets">
+                <div class="row">
+                    <div class="span11">
+                        <h1>Web Sockets</h1>
+                        <ul>
+                            <li>Easily build real-time web apps</li>
+                        </ul>
+                        <h2>Browser Support</h2>
+                        <iframe src="http://caniuse.com/websockets/embed/"></iframe>
+                        <h2>Tools and Frameworks</h2>
+                        <ul class="">
+                            <li><a href="http://socket.io" target="_blank">Socket.io</a></li>
+                        </ul>
+                        <h2>Demo - Real-time Twitter Feed</h2>
+                        <input type="text" id="fetchTwitterData" placeholder="Enter a keyword" /><span id="twitter-stream-status"></span>
+                        <div id="count">0</div>
+                        <ul id="twitter-feed" class="unstyled"></ul>
+                    </div>
                 </div>
-            </div>
+            </section>
             <!-- Desktop Notifications -->
-            <div id="desktopnotifications" class="row">
-                <div class="span12">
-                    <h1>Desktop Notifications</h1>
-                    <h2>Browser Support</h2>
-                    <code>
-                        window.webkitNotifications
-                    </code>
+            <section id="desktopnotifications">
+                <div class="row">
+                    <div class="span11">
+                        <h1>Desktop Notifications</h1>
+                        <h2>Browser Support</h2>
+                        <code>
+                            window.webkitNotifications
+                        </code>
+                    </div>
                 </div>
-            </div>
+            </section>
             <!-- Camera Access -->
-            <div id="camera" class="row">
-                <div class="span11">
-                    <h1>Camera Access</h1>
-                    <h2>Browser Support</h2>
+            <section id="camera">
+                <div class="row">
+                    <div class="span11">
+                        <h1>Camera Access</h1>
+                        <h2>Browser Support</h2>
+                        <iframe src="http://caniuse.com/stream/embed/"></iframe>
 <pre class="prettyprint linenums pre-scrollable">
 navigator.webkitGetUserMedia(
     {video: true, audio: true}, // Options
@@ -78,21 +84,23 @@ navigator.webkitGetUserMedia(
     }
 );
 </pre>
-                    <div>
-                        <video id="video" width="640" height="480" autoplay></video>
+                    <div class="video-container">
+                        <video id="video" width="100%" height="480" autoplay></video>
                     </div>
                 </div>
-            </div>
+             </section>
             <!-- Mobile -->
-            <div id="mobile" class="row">
-                <div class="span12">
-                    <h1>Mobile</h1>
-                    <ul>
-                        <li>Device Orientation</li>
-                        <li>Accelerometer</li>
-                    </ul>
+            <section id="mobile">
+                <div class="row">
+                    <div class="span11">
+                        <h1>Mobile</h1>
+                        <ul>
+                            <li>Device Orientation</li>
+                            <li>Accelerometer</li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
+            </section>
         </div>
         <footer></footer>
         <!--[if lt IE 7]>
