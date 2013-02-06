@@ -114,6 +114,7 @@ ol.linenums li {
 #chat{
 	padding-top:20px;
 	font-size:1.2em;
+
 	ul {
 		list-style:none;
 		padding:0;
@@ -127,6 +128,7 @@ ol.linenums li {
 		overflow:hidden;
 		overflow-y:scroll;
 		padding:10px;
+		-webkit-transition:all 0.2s ease-in-out;
 	}
 	#users{
 		border:7px solid rgba(204,217,228,1);
@@ -136,6 +138,8 @@ ol.linenums li {
 		overflow:hidden;
 		overflow-y:scroll;
 		padding:5px;
+		-webkit-transition:all 0.2s ease-in-out;
+
 	}
 	#chat-input{
 		margin-top:7px;
@@ -143,6 +147,11 @@ ol.linenums li {
 		border-radius:2px;
 		background:rgba(255,255,255,0.8);
 		padding:20px 10px;
+		-webkit-transition:all 0.2s ease-in-out;
+
+	}
+	#set-notifications{
+		display:none;
 	}
 }
 

@@ -33,7 +33,11 @@
                     </div>
                 </div>
                 <div class="row-fluid">
-                    <input type="text" id="chat-input" class="span9"/>
+                    <input type="text" id="chat-input" class="span9" />
+                    <button id="set-notifications">Allow Desktop Notifications</button>
+                </div>
+                <div class="row-fluid">
+                    <input type="text" id="username-input" class="span3" placeholder="set your user name" />
                 </div>
             </section>
         </div>
@@ -57,44 +61,66 @@ $(function(){
         var chat = $('#chat-window ul');
         var userList = $('#users ul');
         var chatInput = $('#chat-input');
+        var userNameInput = $('#username-input');
+        var self = this;
+        this.username = false;
 
         return {
 
             init : function(){
-                //get permission for notifications
-                if (window.webkitNotifications.checkPermission() !== 0) {
-                    window.webkitNotifications.requestPermission();
-                }
-
                 this.attachEvents();
+
+                if (window.webkitNotifications.checkPermission() !== 0) {
+                    $('#set-notifications').show()
+                }
             },
 
             attachEvents : function(){
+                var self = this;
                 chatInput.on('keyup', function(e){
                     if(e.keyCode === 13){
                         var el = $(this);
                         var message = el.val()
-                        socket.emit('sendMessage', message)
+                        var user = self.user
+                        socket.emit('sendMessage', {user : self.username, message : message});
                         el.val('');
                     }
+                });
+
+                userNameInput.on('keyup', function(e){
+                    if(e.keyCode === 13){
+                        var el = $(this);
+                        var username = el.val()
+                        socket.emit('updateUser', username)
+                        self.username = username;
+                        el.val('')
+                        self.activity('you are now "' + username+'"');
+                    }
+                });
+
+                $('#set-notifications').on('click', function(e){
+                        self.setNotifications()
                 });
             },
 
             addUser : function(id){
-                userList.append('<li userid="'+id+'"><a href="javascript:void(0);" userid="'+id+'">'+id+'</a></li>');
+                user = userList.find('[userid='+id+']');
+                if(!user.length){
+                    userList.append('<li><a href="javascript:void(0);" userid="'+id+'">'+id+'</a></li>');
+                }
             },
 
             removeUser : function(id){
-                userList.find('[userid='+id+']').remove();
+                userList.find('[userid='+id+']').parent().remove();
             },
 
             updateChat : function(user, message){
                 chat.append('<li><b>'+user + '</b> : ' + message+'</li>');
                 var parent = chat.parent();
-                parent.scrollTop = parent.scrollHeight;
+                parent[0].scrollTop = parent[0].scrollHeight;
+                
                 //if the user isn't the sender, then trigger a notification
-                console.log(this)
-                if(this.id !== user){
+                if(this.id !== user && this.username !== user){
                     this.triggerNotification(user, message)
                 }
             },
@@ -104,8 +130,26 @@ $(function(){
                     var notification = window.webkitNotifications.createNotification('', user, message);
                     notification.show();
                 }
+            },
+
+            activity : function(message){
+                message = message || '';
+                chat.append('<li><i>'+message+'</i></li>')
+            },
+
+            updateUserList : function(id, username){
+                user = userList.find('[userid='+id+']');
+                if(user.length){
+                    user.text(username);
+                }
+            },
+
+            setNotifications : function(e){
+                //get permission for notifications
+                if (window.webkitNotifications.checkPermission() !== 0) {
+                    window.webkitNotifications.requestPermission();
+                }
             }
-            
         };
     })();
 
@@ -120,9 +164,9 @@ $(function(){
         });
 
         socket.on('userEntered', function(data){
-            console.log(data.id + ' has entered the room.')
             // add the user to the list
             Chat.addUser(data.id)
+            Chat.activity(data.id + ' has entered the room.')
         });
 
         socket.on('userList', function(data){
@@ -132,13 +176,19 @@ $(function(){
         });
 
         socket.on('userLeft', function(data){
-            console.log(data.id + ' has left the room.')
             //remove the user from the user list
-            Chat.removeUser(data.id)
+            var user = $('[userid='+data.id+']')
+            var username = user.length ? user.text() : data.id
+            Chat.removeUser(data.id);
+            Chat.activity(username + ' has left the room.')
         });
 
         socket.on('chatUpdate', function(data){
             Chat.updateChat(data.user, data.message);
+        });
+
+        socket.on('userUpdate', function(data){
+            Chat.updateUserList(data.id, data.user);           
         });
     });
 
