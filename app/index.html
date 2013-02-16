@@ -85,15 +85,19 @@ navigator.webkitGetUserMedia(
                 </div>
              </section>
         </div>
+
 <!-- TEMPLATES -->
 <script id="twitter-template" type="text/x-handlebars-template">
     <li>@{{user.screen_name}} - {{text}}</li>
 </script>
+
+<!-- INCLUDES -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 <script src="scripts/demo/websockets.js"></script>
 <script src="scripts/demo/cameraaccess.js"></script>
 <script src="scripts/demo/notifications.js"></script>
 <script src="scripts/demo/deviceorientation.js"></script>
+
 <script>
 $(function(){
 
@@ -102,10 +106,10 @@ $(function(){
     CameraAccessDemo();
     NotificationsDemo();
     DeviceOrientationDemo();
+
     //syntax highlighting
     prettyPrint() 
 });
-</script>
 </script>
 </body>
 </html>
