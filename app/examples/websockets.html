@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>The Future is Now - SXSW 2013</title>
+        <meta name="description" content="The Future is Now">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../styles/main.css">
+        <script src="../scripts/vendor/modernizr.min.js"></script>
+        <script src="../scripts/vendor/socket.io/socket.io.min.js"></script>
+        <script src="../scripts/vendor/prettify.min.js"></script>
+    </head>
+    <body>
+        <div id="main-content" class="container">
+            <section>
+                <div class="row">
+                    <div class="span11">
+                        <h1>Web Sockets</h1>
+<pre class="prettyprint linenums pre-scrollable">
+//when we recieve a message, show it in the DOM
+socket.on('receiveDemoMessage', function(message){
+    console.log(message)
+    $('#messages').append('<li>'+message+'</li>');
+});
+
+$('#message').on('keyup', function(e){
+    //when the enter key is pressed, send a message
+    if(e.keyCode === 13){
+        var el = $(this);
+        var message = el.val();
+        socket.emit('sendDemoMessage', message);
+        el.val('');
+    }
+});
+</pre>
+                <input id="message" type="text" placeholder="Send a message" />
+                <ul id="messages"></ul>
+                </div>
+             </section>
+        </div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+<script src="../scripts/main.js"></script>
+<script>
+//connect to our server
+var socket = io.connect('http://thefutureisnow.nullempire.com:80');
+
+$(function(){
+    //when we recieve a message, show it in the DOM
+    socket.on('receiveDemoMessage', function(message){
+        console.log(message)
+        $('#messages').append('<li>'+message+'</li>');
+    });
+
+    $('#message').on('keyup', function(e){
+        //when the enter key is pressed, send a message
+        if(e.keyCode === 13){
+            var el = $(this);
+            var message = el.val();
+            socket.emit('sendDemoMessage', message);
+            el.val('');
+        }
+    });
+
+});
+</script>
+</body>
+</html>

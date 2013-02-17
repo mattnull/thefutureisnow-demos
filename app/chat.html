@@ -16,6 +16,7 @@
         </script>
         <script src="scripts/vendor/modernizr.min.js"></script>
         <script src="scripts/chat/videoChat.js"></script>
+        <script src="scripts/chat/webrtc.js"></script>
     </head>
     <body>
         <div class="navbar navbar-fixed-top">
@@ -27,6 +28,13 @@
         </div>
         <div id="main-content" class="container">
             <section id="chat">
+                <div>
+                    <video id="vid1" autoplay=""></video>
+                    <video id="vid2" autoplay=""></video>
+    <button id="btn1" onclick="start()">Start</button>
+    <button id="btn2" onclick="call()" disabled="">Call</button>
+    <button id="btn3" onclick="hangup()" disabled="">Hang Up</button>
+  </div>
                 <div class="row-fluid">
                     <div id="chat-window" class="span9">
                         <ul></ul>
@@ -50,10 +58,8 @@
             <h3 class="user"></h3>
           </div>
           <div class="modal-body">
-            <canvas id="friend-video"></canvas>
-            <canvas id="my-video-canvas" style="display:none;"></canvas>
-            <video autoplay></video>
-            <audio autobuffer="autobuffer"></audio>
+            <canvas id="remote-canvas"></canvas>
+            <video id="local-video" autoplay></video>
             <button id="start-video-chat">Start video chat</button>
           </div>
         </div>

@@ -26,19 +26,19 @@ section{
 	display:none;
 }
 
-#websockets .row{
-	background:rgba(164,82,110,0.9);
-	position:relative;
-}
-
-#desktopnotifications .row{
+section .row{
 	background:rgba(0,61,117,0.9);
 }
-
-#camera .row{
+//camera
+.row{
 	background:rgba(51,51,51,0.9);
 	.video-container{
 		text-align:center;
+		video,canvas{
+			height:auto;
+			float:left;
+			width:48%;
+		}
 	}
 }
 #twitter-feed{
@@ -55,7 +55,6 @@ section{
 	// text-align:center;
 	border-radius:7px;
 	color:#fff;
-	margin-top:20px;
 	padding:10px;
 
 	h1, h2 {
@@ -72,6 +71,7 @@ section{
 		height:350px;
 		width:100%;
 	}
+
 }
 section button{
 	margin:10px 0;

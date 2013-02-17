@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>The Future is Now - SXSW 2013</title>
+        <meta name="description" content="The Future is Now">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="../styles/main.css">
+        <script src="../scripts/vendor/modernizr.min.js"></script>
+        <script src="../scripts/vendor/prettify.min.js"></script>
+    </head>
+    <body>
+        <div id="main-content" class="container">
+            <section>
+                <div class="row">
+                    <div class="span11">
+                        <h1>Orientation</h1>
+<pre class="prettyprint linenums pre-scrollable">
+if(window.DeviceOrientationEvent){
+    window.addEventListener('deviceorientation', function(e){
+        console.log('left-right : ', e.gamma);
+        console.log('front-back : ', e.beta);
+        console.log('direction : ', e.alpha);
+        $('#box').css('-webkit-transform','rotate('+e.gamma+'deg) rotate3d(1,0,0, -'+e.beta+'deg)');
+    }, false);
+}
+</pre>
+                <div id="box" style="background:transparent;border:5px solid #fff;max-width:250px;text-align:center;margin:0 auto;padding:100px 25px;color:#fff;border-radius:250px;"><h1>Move your device</h1></div>
+                </div>
+             </section>
+        </div>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+<script src="../scripts/main.js"></script>
+<script>
+$(function(){
+
+    if(window.DeviceOrientationEvent){
+        window.addEventListener('deviceorientation', function(e){
+            console.log(e)
+            console.log('left-right : ', e.gamma);
+            console.log('front-back : ', e.beta);
+            console.log('direction : ', e.alpha);
+            $('#box').css('-webkit-transform','rotate('+e.gamma+'deg) rotate3d(1,0,0, -'+e.beta+'deg)');
+        }, false);
+    }
+
+});
+</script>
+</body>
+</html>
