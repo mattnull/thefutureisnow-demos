@@ -21,20 +21,25 @@
                     <div class="span11">
                         <h1>Web Sockets</h1>
 <pre class="prettyprint linenums pre-scrollable">
+//connect to our server
+var socket = io.connect('http://thefutureisnow.nullempire.com:80');
 //when we recieve a message, show it in the DOM
 socket.on('receiveDemoMessage', function(message){
     console.log(message)
     $('#messages').append('<li>'+message+'</li>');
 });
+//when the document is ready, attach DOM events
+$(function(){
 
-$('#message').on('keyup', function(e){
-    //when the enter key is pressed, send a message
-    if(e.keyCode === 13){
-        var el = $(this);
-        var message = el.val();
-        socket.emit('sendDemoMessage', message);
-        el.val('');
-    }
+    $('#message').on('keyup', function(e){
+        //when the enter key is pressed, send a message
+        if(e.keyCode === 13){
+            var el = $(this);
+            var message = el.val();
+            socket.emit('sendDemoMessage', message);
+            el.val('');
+        }
+    });
 });
 </pre>
                 <input id="message" type="text" placeholder="Send a message" />
@@ -47,13 +52,13 @@ $('#message').on('keyup', function(e){
 <script>
 //connect to our server
 var socket = io.connect('http://thefutureisnow.nullempire.com:80');
-
+//when we recieve a message, show it in the DOM
+socket.on('receiveDemoMessage', function(message){
+    console.log(message)
+    $('#messages').append('<li>'+message+'</li>');
+});
+//when the document is ready, attach DOM events
 $(function(){
-    //when we recieve a message, show it in the DOM
-    socket.on('receiveDemoMessage', function(message){
-        console.log(message)
-        $('#messages').append('<li>'+message+'</li>');
-    });
 
     $('#message').on('keyup', function(e){
         //when the enter key is pressed, send a message
@@ -64,7 +69,6 @@ $(function(){
             el.val('');
         }
     });
-
 });
 </script>
 </body>
