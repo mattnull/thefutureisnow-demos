@@ -206,4 +206,9 @@ module.exports = function( grunt ) {
   //stylus
   grunt.loadNpmTasks('grunt-contrib-stylus');
   // grunt.registerTask('compass', ['stylus']);
+
+  grunt.registerHelper('reload:inject', function () {
+  return function inject(req, res, next) {
+      return next();
+  }});
 };

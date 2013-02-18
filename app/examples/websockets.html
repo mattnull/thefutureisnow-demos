@@ -25,8 +25,7 @@
 var socket = io.connect('http://thefutureisnow.nullempire.com:80');
 //when we recieve a message, show it in the DOM
 socket.on('receiveDemoMessage', function(message){
-    console.log(message)
-    $('#messages').append('<li>'+message+'</li>');
+    //append to messages list
 });
 //when the document is ready, attach DOM events
 $(function(){
@@ -54,7 +53,6 @@ $(function(){
 var socket = io.connect('http://thefutureisnow.nullempire.com:80');
 //when we recieve a message, show it in the DOM
 socket.on('receiveDemoMessage', function(message){
-    console.log(message)
     $('#messages').append('<li>'+message+'</li>');
 });
 //when the document is ready, attach DOM events

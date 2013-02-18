@@ -2,16 +2,12 @@
 @import "_compass_twitter_bootstrap_responsive";
 
 body{
-	background:url('/images/emblem-medium.png') 0 0 no-repeat;
 	background-size:40%;
 	background-position:center 40%;
 	background-attachment:fixed;
 }
 section{
-	padding-top:40px;
-}
-#main-content{
-	margin-top:40px;
+	padding:40px 0;
 }
 
 #count{
@@ -23,7 +19,6 @@ section{
 	top: 15px;
 	right: 10px;
 	text-shadow: 0 0 2px #000;
-	display:none;
 }
 
 section .row{
