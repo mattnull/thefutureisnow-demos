@@ -16,16 +16,16 @@ module.exports = function( grunt ) {
     },
 
     // Coffee to JS compilation
-    coffee: {
-      compile: {
-        files: {
-          'temp/scripts/*.js': 'app/scripts/**/*.coffee' 
-        },
-        options: {
-          basePath: 'app/scripts'
-        }
-      }
-    },
+    // coffee: {
+    //   compile: {
+    //     files: {
+    //       'temp/scripts/*.js': 'app/scripts/**/*.coffee' 
+    //     },
+    //     options: {
+    //       basePath: 'app/scripts'
+    //     }
+    //   }
+    // },
 
     // compile .scss/.sass to .css using Compass
     compass: {
@@ -53,10 +53,10 @@ module.exports = function( grunt ) {
 
     // default watch configuration
     watch: {
-      coffee: {
-        files: 'app/scripts/**/*.coffee',
-        tasks: 'coffee reload'
-      },
+      // coffee: {
+      //   files: 'app/scripts/**/*.coffee',
+      //   tasks: 'coffee reload'
+      // },
       compass: {
         files: [
           'app/styles/**/*.{scss,sass}'
