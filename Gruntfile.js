@@ -16,16 +16,16 @@ module.exports = function( grunt ) {
     },
 
     // Coffee to JS compilation
-    // coffee: {
-    //   compile: {
-    //     files: {
-    //       'temp/scripts/*.js': 'app/scripts/**/*.coffee' 
-    //     },
-    //     options: {
-    //       basePath: 'app/scripts'
-    //     }
-    //   }
-    // },
+    coffee: {
+      compile: {
+        files: {
+          'temp/scripts/*.js': 'app/scripts/**/*.coffee' 
+        },
+        options: {
+          basePath: 'app/scripts'
+        }
+      }
+    },
 
     // compile .scss/.sass to .css using Compass
     compass: {
