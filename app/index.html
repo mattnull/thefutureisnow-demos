@@ -1,115 +1,94 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>The Future is Now - SXSW 2013</title>
-        <meta name="description" content="The Future is Now">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="styles/main.css">
-        <script src="scripts/vendor/modernizr.min.js"></script>
-        <script src="scripts/vendor/socket.io/socket.io.min.js"></script>
-        <script src="scripts/vendor/handlebars.min.js"></script>
-        <script src="scripts/vendor/prettify.min.js"></script>
-    </head>
-    <body>
-        <div class="navbar navbar-fixed-top">
-          <div class="navbar-inner">
-            <div class="container">
-                <a class="brand" href="#">TheFutureisNow</a>
-                <ul class="nav">
-                  <li class="active"><a href="#">Home</a></li>
-                  <li><a href="#websockets">Web Sockets</a></li>
-                  <li><a href="#desktopnotifications">Desktop Notifications</a></li>
-                  <li><a href="#camera">Camera Access</a></li>
-                </ul>
-            </div>
-          </div>
-        </div>
-        <div id="main-content" class="container">
-             <!-- Web Sockets -->
-            <section id="websockets">
-                <div class="row">
-                    <div class="span11">
-                        <h1>Web Sockets</h1>
-                        <h2>Demo - Real-time Twitter Feed</h2>
-                        <input type="text" id="fetchTwitterData" placeholder="Search for something on Twitter" /><span id="twitter-stream-status"></span>
-                        <div id="count">0</div>
-                        <ul id="twitter-feed" class="unstyled"></ul>
-                    </div>
-                </div>
-            </section>
-            <!-- Desktop Notifications -->
-            <section id="desktopnotifications">
-                <div class="row">
-                    <div class="span11">
-                        <h1>Notifications</h1>
-                        <button id="allow-notifications">Allow Notifications</button>
-<pre class="prettyprint linenums pre-scrollable">
-// 0 means we HAVE permissions (I know its weird)
-if (window.webkitNotifications.checkPermission() !== 0) {
-    window.webkitNotifications.requestPermission();
-}
-else{ // create a notification and show it!
-    var notification = window.webkitNotifications.createNotification('icon.png', 'HORRAY!','You have notifications enabled!');
-    notification.show();
-}
-</pre>
-                    </div>
-                </div>
-            </section>
-            <!-- Camera Access -->
-            <section id="camera">
-                <div class="row">
-                    <div class="span11">
-                        <h1>Camera Access</h1>
-                        <button id="camera">Open Camera</button>
-<pre class="prettyprint linenums pre-scrollable">
-navigator.webkitGetUserMedia(
-    {video: true, audio: true}, // Options
-    function(localMediaStream) { // Success
-        stream = localMediaStream;
-        video.src = window.webkitURL.createObjectURL(stream);
-    },
-    function(err) { // Failure
-        console.log('getUserMedia Failed!')
-    }
-);
-</pre>
-                    <div class="video-container">
-                        <video id="video" width="100%" height="480" autoplay></video>
-                    </div>
-                </div>
-             </section>
-        </div>
+<html>
+	<head>
+		<style>
+		@-webkit-keyframes growbounce {
+	        0% { 
+	        	-webkit-transform: scale(0); 
+	            -webkit-animation-timing-function: ease-in-out; 
+	         }
+	         30% { 
+	        	-webkit-transform: scale(1); 
+	            -webkit-animation-timing-function: ease-in-out; 
+	         
+	         }
+	         100% { 
+	        	-webkit-transform: scale(0.9); 
+	            -webkit-animation-timing-function: ease-in-out; 
 
-<!-- TEMPLATES -->
-<script id="twitter-template" type="text/x-handlebars-template">
-    <li>@{{user.screen_name}} - {{text}}</li>
-</script>
+	         }
 
-<!-- INCLUDES -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
-<script src="scripts/demo/websockets.js"></script>
-<script src="scripts/demo/cameraaccess.js"></script>
-<script src="scripts/demo/notifications.js"></script>
-<script src="scripts/demo/deviceorientation.js"></script>
+	    }
+			body{
+				overflow: hidden;
+				text-align:center;
+				font-family:"HelveticaNeue-UltraLight";
+			}
+			h1,h2{
+				font-family:"HelveticaNeue-UltraLight";
+				-webkit-transition:all 0.5s ease-in-out;
+				
+				text-align: center;
+				font-weight:200;
+				
+				width:100%;
+				color:#333;
+				margin:15px 0;
+			}
+			h1{
+				
+				font-size:8em;
+			}
+			h2{
+				
+				font-size:2em;
+			}
+			.demos{
+				margin:0 auto;
+				font-weight:200;
+				font-size:1em;
+				text-align: center;
+				width:500px;
+				height:auto;
+				overflow:hidden;
+				font-size:2em;
+				/*-webkit-animation:growbounce .40s linear;*/
 
-<script>
-$(function(){
+			}
+			.demos ul{
+				margin:0;
+				padding:0;
+			}
+			.demos li{
+				list-style:none;
+			}
+			.demos a{
+				color:rgba(53,83,143,1);
+				-webkit-transition:all 0.2s ease-in-out;
+			}
+			.demos a:hover{
+				color:#62230a;
+				text-shadow:0 0 5px #a6c0d7;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>The Future</h1>
+		<h1>Is Now</h1>
+		<h2>[SXSW 2013]</h2>
+		<div class="demos">
+			<h2>Demos</h2>
+			<ul>
+				<li><a href="/demos/camera.html">Camera</a></li>
+				<li><a href="/demos/camera-snapshot.html">Camera + Snapshot</a></li>
+				<li><a href="/demos/camera-snapshot-filter.html">Camera + Snapshot + Filter</a></li>
+				<li><a href="/demos/notifications.html">Notifications</a></li>
+				<li><a href="/demos/orientation.html">Orientation</a></li>
+				<li><a href="/demos/websockets.html">Web Sockets</a></li>
+				<li><a href="/demos/websockets-notifications.html">Web Sockets + Notifications</a></li>
+				<li><a href="/demos/websockets-twitter-feed.html">Web Sockets + Twitter Stream API</a></li>
+			</ul>
 
-    //instantiate demos
-    WebSocketsDemo();
-    CameraAccessDemo();
-    NotificationsDemo();
-    DeviceOrientationDemo();
-
-    //syntax highlighting
-    prettyPrint() 
-});
-</script>
-</body>
+		</div>
+	</body>
 </html>

@@ -22,7 +22,12 @@ section{
 }
 
 section .row{
-	background:rgba(0,61,117,0.9);
+	background:transparent;
+	h1{
+
+		
+	
+	}
 }
 //camera
 .row{
@@ -35,10 +40,17 @@ section .row{
 			width:48%;
 		}
 	}
+
+}
+.row pre.prettyprint{
+	margin-top:20px;
 }
 #twitter-feed{
 	max-height:350px;
 	overflow-y:scroll;
+}
+.row #messages{
+	color:#333;
 }
 #twitter-stream-status{
 	padding:0 5px;
@@ -53,7 +65,10 @@ section .row{
 	padding:10px;
 
 	h1, h2 {
-		text-shadow:0 0 3px #000;
+		font-family: "Helvetica-Neue-UltraLite", Helvetica, Arial;
+		font-weight: 200;
+		color: #333;
+		font-size: 4em; 
 	}
 	h2 {
 		border-bottom:1px solid #333;
