@@ -26,18 +26,7 @@ module.exports = function( grunt ) {
         }
       }
     },
-    //stylus
-    stylus: {
-      compile: {
-        options: {
-          compress: true,
-          paths: ['node_modules/grunt-contrib-stylus/node_modules']
-        },
-        files: {
-          'app/styles/*.css': ['app/styles/src/*.styl']
-        }
-      }
-    },
+
     // compile .scss/.sass to .css using Compass
     compass: {
       dist: {
@@ -83,12 +72,6 @@ module.exports = function( grunt ) {
         ],
         tasks: 'reload'
       }
-      // stylus: {
-      //   files: [
-      //     'app/styles/src/**/*.styl'
-      //   ],
-      //   tasks: 'stylus reload'
-      // }
     },
 
     // default lint configuration, change this to match your setup:
@@ -203,9 +186,6 @@ module.exports = function( grunt ) {
   // Alias the `test` task to run the `mocha` task instead
   grunt.registerTask('test', 'server:phantom mocha');
 
-  //stylus
-  grunt.loadNpmTasks('grunt-contrib-stylus');
-  // grunt.registerTask('compass', ['stylus']);
 
   grunt.registerHelper('reload:inject', function () {
   return function inject(req, res, next) {
