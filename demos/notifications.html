@@ -34,7 +34,7 @@ else{ // create a notification and show it!
                 </div>
             </section>
         </div>
-<script src="../scripts/main.js"></script>
+<script src="scripts/main.js"></script>
 
 <script>
 //on document ready
@@ -47,8 +47,9 @@ $(function(){
             window.webkitNotifications.requestPermission();
         }
         else{
+
             //create a notification
-            var notification = window.webkitNotifications.createNotification('icon.png', 'HORRAY!','You have notifications enabled!');
+            var notification = window.webkitNotifications.createNotification('', 'HORRAY!','You have notifications enabled!');
 
             //show the notification
             notification.show();
